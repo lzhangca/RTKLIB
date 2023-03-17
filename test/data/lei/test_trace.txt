@@ -1,0 +1,129 @@
+3 postpos : ti=0 tu=0 n=3 outfile=
+3 openses :
+3 execses_b: n=3 outfile=
+3 readpreceph: n=3
+3 readpephs: file=..\..\..\test\data\lei\07590920.05o
+3 expath  : path=..\..\..\test\data\lei\07590920.05o nmax=1024
+3 expath  : file=..\..\..\test\data\lei\07590920.05o
+3 readpephs: file=..\..\..\test\data\lei\30400920.05o
+3 expath  : path=..\..\..\test\data\lei\30400920.05o nmax=1024
+3 expath  : file=..\..\..\test\data\lei\30400920.05o
+3 readpephs: file=..\..\..\test\data\lei\30400920.05n
+3 expath  : path=..\..\..\test\data\lei\30400920.05n nmax=1024
+3 expath  : file=..\..\..\test\data\lei\30400920.05n
+3 readrnxc: file=..\..\..\test\data\lei\07590920.05o
+3 expath  : path=..\..\..\test\data\lei\07590920.05o nmax=1024
+3 expath  : file=..\..\..\test\data\lei\07590920.05o
+3 readrnxfile: file=..\..\..\test\data\lei\07590920.05o flag=1 index=0
+3 uncompress: file=..\..\..\test\data\lei\07590920.05o
+3 uncompress: stat=0
+3 readrnxfp: flag=1 index=0
+3 readrnxh:
+4 decode_obsh: ver=2.10
+4 decode_obsh: ver=2.10
+4 decode_obsh: ver=2.10
+4 decode_obsh: ver=2.10
+4 decode_obsh: ver=2.10
+4 decode_obsh: ver=2.10
+4 decode_obsh: ver=2.10
+4 decode_obsh: ver=2.10
+3 convcode: ver=2.10 sys= 1 type= L1 -> L1C
+3 convcode: ver=2.10 sys= 4 type= L1 -> L1C
+3 convcode: ver=2.10 sys= 8 type= L1 -> L1X
+3 convcode: ver=2.10 sys=16 type= L1 -> L1C
+3 convcode: ver=2.10 sys= 2 type= L1 -> L1C
+3 convcode: ver=2.10 sys=32 type= L1 ->    
+3 convcode: ver=2.10 sys= 1 type= C1 -> C1C
+3 convcode: ver=2.10 sys= 4 type= C1 -> C1C
+3 convcode: ver=2.10 sys= 8 type= C1 -> C1X
+3 convcode: ver=2.10 sys=16 type= C1 -> C1C
+3 convcode: ver=2.10 sys= 2 type= C1 -> C1C
+3 convcode: ver=2.10 sys=32 type= C1 ->    
+3 convcode: ver=2.10 sys= 1 type= L2 -> L2W
+3 convcode: ver=2.10 sys= 4 type= L2 -> L2P
+3 convcode: ver=2.10 sys= 8 type= L2 ->    
+3 convcode: ver=2.10 sys=16 type= L2 -> L2X
+3 convcode: ver=2.10 sys= 2 type= L2 ->    
+3 convcode: ver=2.10 sys=32 type= L2 -> L1X
+3 convcode: ver=2.10 sys= 1 type= P2 -> C2W
+3 convcode: ver=2.10 sys= 4 type= P2 -> C2P
+3 convcode: ver=2.10 sys= 8 type= P2 ->    
+3 convcode: ver=2.10 sys=16 type= P2 ->    
+3 convcode: ver=2.10 sys= 2 type= P2 ->    
+3 convcode: ver=2.10 sys=32 type= P2 ->    
+4 decode_obsh: ver=2.10
+4 decode_obsh: ver=2.10
+4 decode_obsh: ver=2.10
+3 readrnxc: file=..\..\..\test\data\lei\30400920.05o
+3 expath  : path=..\..\..\test\data\lei\30400920.05o nmax=1024
+3 expath  : file=..\..\..\test\data\lei\30400920.05o
+3 readrnxfile: file=..\..\..\test\data\lei\30400920.05o flag=1 index=0
+3 uncompress: file=..\..\..\test\data\lei\30400920.05o
+3 uncompress: stat=0
+3 readrnxfp: flag=1 index=0
+3 readrnxh:
+4 decode_obsh: ver=2.10
+4 decode_obsh: ver=2.10
+4 decode_obsh: ver=2.10
+4 decode_obsh: ver=2.10
+4 decode_obsh: ver=2.10
+4 decode_obsh: ver=2.10
+4 decode_obsh: ver=2.10
+4 decode_obsh: ver=2.10
+3 convcode: ver=2.10 sys= 1 type= L1 -> L1C
+3 convcode: ver=2.10 sys= 4 type= L1 -> L1C
+3 convcode: ver=2.10 sys= 8 type= L1 -> L1X
+3 convcode: ver=2.10 sys=16 type= L1 -> L1C
+3 convcode: ver=2.10 sys= 2 type= L1 -> L1C
+3 convcode: ver=2.10 sys=32 type= L1 ->    
+3 convcode: ver=2.10 sys= 1 type= C1 -> C1C
+3 convcode: ver=2.10 sys= 4 type= C1 -> C1C
+3 convcode: ver=2.10 sys= 8 type= C1 -> C1X
+3 convcode: ver=2.10 sys=16 type= C1 -> C1C
+3 convcode: ver=2.10 sys= 2 type= C1 -> C1C
+3 convcode: ver=2.10 sys=32 type= C1 ->    
+3 convcode: ver=2.10 sys= 1 type= L2 -> L2W
+3 convcode: ver=2.10 sys= 4 type= L2 -> L2P
+3 convcode: ver=2.10 sys= 8 type= L2 ->    
+3 convcode: ver=2.10 sys=16 type= L2 -> L2X
+3 convcode: ver=2.10 sys= 2 type= L2 ->    
+3 convcode: ver=2.10 sys=32 type= L2 -> L1X
+3 convcode: ver=2.10 sys= 1 type= P2 -> C2W
+3 convcode: ver=2.10 sys= 4 type= P2 -> C2P
+3 convcode: ver=2.10 sys= 8 type= P2 ->    
+3 convcode: ver=2.10 sys=16 type= P2 ->    
+3 convcode: ver=2.10 sys= 2 type= P2 ->    
+3 convcode: ver=2.10 sys=32 type= P2 ->    
+4 decode_obsh: ver=2.10
+4 decode_obsh: ver=2.10
+4 decode_obsh: ver=2.10
+3 readrnxc: file=..\..\..\test\data\lei\30400920.05n
+3 expath  : path=..\..\..\test\data\lei\30400920.05n nmax=1024
+3 expath  : file=..\..\..\test\data\lei\30400920.05n
+3 readrnxfile: file=..\..\..\test\data\lei\30400920.05n flag=1 index=0
+3 uncompress: file=..\..\..\test\data\lei\30400920.05n
+3 uncompress: stat=0
+3 readrnxfp: flag=1 index=0
+3 readrnxh:
+4 decode_navh:
+4 decode_navh:
+4 decode_navh:
+4 decode_navh:
+4 decode_navh:
+3 sbsreadmsg: file=..\..\..\test\data\lei\07590920.05o sel=0
+3 sbsreadmsgt: file=..\..\..\test\data\lei\07590920.05o sel=0
+3 expath  : path=..\..\..\test\data\lei\07590920.05o nmax=1024
+3 expath  : file=..\..\..\test\data\lei\07590920.05o
+3 sbsreadmsg: file=..\..\..\test\data\lei\30400920.05o sel=0
+3 sbsreadmsgt: file=..\..\..\test\data\lei\30400920.05o sel=0
+3 expath  : path=..\..\..\test\data\lei\30400920.05o nmax=1024
+3 expath  : file=..\..\..\test\data\lei\30400920.05o
+3 sbsreadmsg: file=..\..\..\test\data\lei\30400920.05n sel=0
+3 sbsreadmsgt: file=..\..\..\test\data\lei\30400920.05n sel=0
+3 expath  : path=..\..\..\test\data\lei\30400920.05n nmax=1024
+3 expath  : file=..\..\..\test\data\lei\30400920.05n
+3 readmsgs: file=..\..\..\test\data\lei\07590920.05o sel=0
+3 readmsgs: file=..\..\..\test\data\lei\30400920.05o sel=0
+3 readmsgs: file=..\..\..\test\data\lei\30400920.05n sel=0
+3 execses_r: n=3 outfile=
+3 execses : n=3 outfile=

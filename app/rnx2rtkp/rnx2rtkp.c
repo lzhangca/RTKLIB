@@ -105,6 +105,8 @@ int main(int argc, char **argv)
     sprintf(solopt.prog ,"%s ver.%s",PROGNAME,VER_RTKLIB);
     sprintf(filopt.trace,"%s.trace",PROGNAME);
     
+    traceopen("..\\..\\..\\test\\data\\lei\\test_trace.txt");
+
     /* load options from configuration file */
     for (i=1;i<argc;i++) {
         if (!strcmp(argv[i],"-k")&&i+1<argc) {
@@ -162,8 +164,13 @@ int main(int argc, char **argv)
         showmsg("error : no input file");
         return -2;
     }
+
+    tracelevel(solopt.trace);
+
     ret=postpos(ts,te,tint,0.0,&prcopt,&solopt,&filopt,infile,n,outfile,"","");
     
+    traceclose();
+
     if (!ret) fprintf(stderr,"%40s\r","");
     return ret;
 }
