@@ -210,13 +210,13 @@ const char *formatstrs[]={      /* stream format strings */
     "NVS BINR",                 /* 10 */
     "BINEX",                    /* 11 */
     "Trimble RT17",             /* 12 */
-    "LEX Receiver",             /* 13 */
+	"UM982",                    /* 13 */
     "Septentrio",               /* 14 */
     "RINEX",                    /* 15 */
     "SP3",                      /* 16 */
     "RINEX CLK",                /* 17 */
     "SBAS",                     /* 18 */
-    "NMEA 0183",                /* 19 */
+	"NMEA 0183",                /* 19 */
     NULL
 };
 static char *obscodes[]={       /* observation code strings */

@@ -391,18 +391,15 @@ extern "C" {
 #define STRFMT_NVS   10                 /* stream format: NVS NVC08C */
 #define STRFMT_BINEX 11                 /* stream format: BINEX */
 #define STRFMT_RT17  12                 /* stream format: Trimble RT17 */
-#define STRFMT_LEXR  13                 /* stream format: Furuno LPY-10000 */
+#define STRFMT_UM982 13                 /* stream format: Unicore UM982 */
 #define STRFMT_SEPT  14                 /* stream format: Septentrio */
 #define STRFMT_RINEX 15                 /* stream format: RINEX */
 #define STRFMT_SP3   16                 /* stream format: SP3 */
 #define STRFMT_RNXCLK 17                /* stream format: RINEX CLK */
 #define STRFMT_SBAS  18                 /* stream format: SBAS messages */
 #define STRFMT_NMEA  19                 /* stream format: NMEA 0183 */
-#ifndef EXTLEX
-#define MAXRCVFMT    12                 /* max number of receiver format */
-#else
-#define MAXRCVFMT    13
-#endif
+
+#define MAXRCVFMT    13                 /* max number of receiver format */
 
 #define STR_MODE_R  0x1                 /* stream mode: read */
 #define STR_MODE_W  0x2                 /* stream mode: write */

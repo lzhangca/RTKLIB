@@ -73,12 +73,12 @@ __fastcall TMainWindow::TMainWindow(TComponent* Owner)
     IniFile=file;
     
     DoubleBuffered=true;
-    Format->Items->Clear();
+	Format->Items->Clear();
     Format->Items->Add("Auto");
     for (i=0;i<=MAXRCVFMT;i++) {
-        Format->Items->Add(formatstrs[i]);
+		Format->Items->Add(formatstrs[i]);
     }
-    Format->Items->Add(formatstrs[STRFMT_RINEX]);
+	Format->Items->Add(formatstrs[STRFMT_RINEX]);
     RnxTime=time0;
     EventEna=0;
 }
@@ -636,7 +636,7 @@ int __fastcall TMainWindow::ExecCmd(AnsiString cmd)
 // undate enable/disable of widgets -----------------------------------------
 void __fastcall TMainWindow::UpdateEnable(void)
 {
-    AnsiString FormatText=Format->Text;
+	AnsiString FormatText=Format->Text;
     int rnx=strstr(FormatText.c_str(),"RINEX")!=NULL;
     TimeY1         ->Enabled=TimeStartF ->Checked;
     TimeH1         ->Enabled=TimeStartF ->Checked;
@@ -794,7 +794,7 @@ void __fastcall TMainWindow::ConvertFile(void)
     p=rnxopt.comment[0];
     sprintf(p,"log: %-53.53s",file);
     p=rnxopt.comment[1];
-    p+=sprintf(p,"format: %s",formatstrs[format]);
+	p+=sprintf(p,"format: %s",formatstrs[format]);
     if (*rnxopt.rcvopt) sprintf(p,", option: %s",rnxopt.rcvopt);
     for (i=0;i<2;i++) strncpy(rnxopt.comment[i+2],Comment[i].c_str(),63);
     for (i=0;i<6;i++) strcpy(rnxopt.mask[i],CodeMask[i].c_str());
