@@ -988,8 +988,9 @@ extern int input_rawf(raw_t *raw, int format, FILE *fp)
     switch (format) {
         case STRFMT_OEM4 : return input_oem4f (raw,fp);
         case STRFMT_OEM3 : return input_oem3f (raw,fp);
-        case STRFMT_UBX  : return input_ubxf  (raw,fp);
-        case STRFMT_SS2  : return input_ss2f  (raw,fp);
+		// case STRFMT_UBX  : return input_ubxf  (raw,fp);
+		case STRFMT_UBX  : return input_um982f(raw,fp);
+		case STRFMT_SS2  : return input_ss2f  (raw,fp);
         case STRFMT_CRES : return input_cresf (raw,fp);
         case STRFMT_STQ  : return input_stqf  (raw,fp);
         case STRFMT_GW10 : return input_gw10f (raw,fp);

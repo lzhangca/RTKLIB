@@ -1528,6 +1528,7 @@ extern int input_rt17  (raw_t *raw, unsigned char data);
 extern int input_lexr  (raw_t *raw, unsigned char data);
 extern int input_oem4f (raw_t *raw, FILE *fp);
 extern int input_oem3f (raw_t *raw, FILE *fp);
+extern int input_um982f(raw_t *raw, FILE *fp);
 extern int input_ubxf  (raw_t *raw, FILE *fp);
 extern int input_ss2f  (raw_t *raw, FILE *fp);
 extern int input_cresf (raw_t *raw, FILE *fp);
