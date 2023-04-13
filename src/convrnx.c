@@ -401,8 +401,7 @@ static int scan_obstype(int format, const char *file, rnxopt_t *opt,
     unsigned char codes[6][33]={{0}};
     unsigned char types[6][33]={{0}};
     char msg[128];
-	int i,j,k,l,c=0,type,sys,abort=0,n[6]={0};
-	int test_prn;
+    int i,j,k,l,c=0,type,sys,abort=0,n[6]={0};
     
     trace(3,"scan_obstype: file=%s, opt=%s\n",file,opt);
     
@@ -419,11 +418,11 @@ static int scan_obstype(int format, const char *file, rnxopt_t *opt,
         
         if (!opt->ts.time||timediff(str->obs->data[0].time,opt->ts)>=0.001) {
              
-			for (i=0;i<str->obs->n;i++) {
-				sys=satsys(str->obs->data[i].sat,NULL);
-				for (l=0;navsys[l];l++) if (navsys[l]==sys) break;
+            for (i=0;i<str->obs->n;i++) {
+                sys=satsys(str->obs->data[i].sat,NULL);
+                for (l=0;navsys[l];l++) if (navsys[l]==sys) break;
                 if (!navsys[l]) continue;
-
+                
                 for (j=0;j<NFREQ+NEXOBS;j++) {
                     if (!str->obs->data[i].code[j]) continue;
                     
