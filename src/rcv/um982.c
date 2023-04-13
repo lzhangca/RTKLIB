@@ -209,6 +209,11 @@ static int decode_obsvm(raw_t *raw)
 			continue;
 		}
 
+		/* set glonass frequency channel number */
+		if (sys==SYS_GLO) {
+			raw->nav.geph[prn-1].frq=sysf-7;
+		}
+
 		raw->tobs [sat-1][pos]=raw->time;
 		raw->lockt[sat-1][pos]=lockt;
 
@@ -238,6 +243,12 @@ static int decode_um982(raw_t *raw)
 	int msg,week,type=U2(raw->buff+4);
 
 	trace(3,"decode_um982: type=%3d len=%d\n",type,raw->len);
+
+	/* check crc32 */
+	if (rtk_crc32(raw->buff,raw->len)!=U4(raw->buff+raw->len)) {
+		trace(2,"um982 crc error: type=%3d len=%d\n",type,raw->len);
+		return -1;
+	}
 
 	if (!(week=U2(raw->buff+10))) {
 		return -1;
