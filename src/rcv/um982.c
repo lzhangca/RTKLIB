@@ -28,9 +28,11 @@ static int obsindex(obs_t *obs, gtime_t time, int sat)
     obs->data[i].time=time;
     obs->data[i].sat=sat;
     for (j=0;j<NFREQ+NEXOBS;j++) {
-        obs->data[i].L[j]=obs->data[i].P[j]=0.0;
-        obs->data[i].D[j]=0.0;
-        obs->data[i].SNR[j]=obs->data[i].LLI[j]=0;
+		obs->data[i].L[j]=0.0;
+		obs->data[i].P[j]=0.0;
+		obs->data[i].D[j]=0.0;
+		obs->data[i].SNR[j]=0;
+		obs->data[i].LLI[j]=0;
         obs->data[i].code[j]=CODE_NONE;
     }
     obs->n++;
@@ -68,10 +70,10 @@ static int decode_trackstat(unsigned int stat, int *sys, int *code, int *plock,
 	*clock =(stat>>12)&1;
 	sigtype=(stat>>21)&0x1F;
     l2type =(stat>>26)&1;
-
-    switch (satsys) {
-        case 0: *sys=SYS_GPS; break;
-        case 1: *sys=SYS_GLO; break;
+	l2type=0;
+	switch (satsys) {
+		case 0: *sys=SYS_GPS; break;
+		case 1: *sys=SYS_GLO; break;
 		case 2: *sys=SYS_SBS; break;
 		case 3: *sys=SYS_GAL; break;
 		case 4: *sys=SYS_CMP; break;
@@ -87,7 +89,7 @@ static int decode_trackstat(unsigned int stat, int *sys, int *code, int *plock,
 			case 11: freq=0; *code=CODE_L1S; break; // L1C data semicodeless
 			case  9: freq=1;
 					 *code = l2type ? CODE_L2S : CODE_L2W;
-					 break; 						// L2C(M) or L2P
+					 break; 						// L2C(L) or L2P
 			case 17: freq=1; *code=CODE_L2L; break; // L2C(L)
 			case 14: freq=2; *code=CODE_L5Q; break; // L5 pilot
 			case  6: freq=2; *code=CODE_L5I; break; // L5 data
@@ -143,28 +145,22 @@ static int decode_trackstat(unsigned int stat, int *sys, int *code, int *plock,
 	}
     return freq;
 }
-/* check code priority and return obs position -------------------------------*/
-static int checkpri(const char *opt, int sys, int code, int freq)
+/* return obs position -------------------------------------------------------*/
+static int getUM982opps(int sys, int code, int freq)
 {
-	int nex=NEXOBS; /* number of extended obs data */
-
-	if (sys==SYS_GPS) {
-		if (strstr(opt,"-GL1P")&&freq==0) return code==CODE_L1P?0:-1;
-		if (strstr(opt,"-GL2X")&&freq==1) return code==CODE_L2X?1:-1;
-		if (code==CODE_L1P) return nex<1?-1:NFREQ;
-		if (code==CODE_L2X) return nex<2?-1:NFREQ+1;
+	int pos = freq;
+	/*
+	if (sys==SYS_GAL) {
+		if (code == CODE_L5Q) pos = 1;
+		if (code == CODE_L7Q) pos = 2;
 	}
-	else if (sys==SYS_GLO) {
-		if (strstr(opt,"-RL2C")&&freq==1) return code==CODE_L2C?1:-1;
-		if (code==CODE_L2C) return nex<1?-1:NFREQ;
+	else if (sys==SYS_CMP) {
+		if (code == CODE_L2I) pos = 0;
+		if (code == CODE_L7I) pos = 1;
+		if (code == CODE_L6I) pos = 2;
 	}
-    else if (sys==SYS_GAL) {
-        if (strstr(opt,"-EL1B")&&freq==0) return code==CODE_L1B?0:-1;
-        if (code==CODE_L1B) return nex<1?-1:NFREQ;
-		if (code==CODE_L7Q) return nex<2?-1:NFREQ+1;
-		if (code==CODE_L8Q) return nex<3?-1:NFREQ+2;
-    }
-    return freq<NFREQ?freq:-1;
+    */
+	return pos<NFREQ?pos:-1;
 }
 
 /* decode obsvm ----------------------------------------------------------*/
@@ -197,13 +193,16 @@ static int decode_obsvm(raw_t *raw)
 		adr = R8(p+12);
 		dop = R4(p+24);
 		lockt = R4(p+32);
-        snr = U2(p+28)*0.01;
+		snr = U2(p+28)*0.01;
 
 		// decode tracking status
 		if ((freq=decode_trackstat(U4(p+36),&sys,&code,&plock,&clock))<0) continue;
 
 		// obs position
-		if ((pos=checkpri(raw->opt,sys,code,freq))<0) continue;
+		if ((pos=getUM982opps(sys,code,freq))<0)
+			continue;
+
+        if(sysf != 0 || sys == SYS_GLO) prn -= 37;
 
 		if (!(sat=satno(sys,prn))) {
 			trace(3,"um982 obsvm satellite number error: sys=%d,prn=%d\n",sys,prn);
@@ -224,7 +223,7 @@ static int decode_obsvm(raw_t *raw)
 			raw->obs.data[index].P  [pos]=psr;
 			raw->obs.data[index].D  [pos]=(float)dop;
 			raw->obs.data[index].SNR[pos]=
-				0.0<=snr&&snr<255.0?(unsigned char)(snr*4+0.5):0;
+				0.0<=snr&&snr<255.0?(unsigned char)(snr*4):0;
 			raw->obs.data[index].code[pos]=code;
 		}
 	}

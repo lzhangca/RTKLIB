@@ -351,29 +351,36 @@ static void fatalerr(const char *format, ...)
 *-----------------------------------------------------------------------------*/
 extern int satno(int sys, int prn)
 {
-    if (prn<=0) return 0;
+	int a1 = NSATGPS;
+	int a2 = NSATGLO;
+	int a3 = NSATGAL;
+	int a4 = NSATQZS;
+	int a5 = NSATCMP;
+	int a6 = NSATLEO;
+
+	if (prn<=0) return 0;
     switch (sys) {
         case SYS_GPS:
             if (prn<MINPRNGPS||MAXPRNGPS<prn) return 0;
-            return prn-MINPRNGPS+1;
+			return prn-MINPRNGPS+1;
         case SYS_GLO:
             if (prn<MINPRNGLO||MAXPRNGLO<prn) return 0;
-            return NSATGPS+prn-MINPRNGLO+1;
+			return NSATGPS+prn-MINPRNGLO+1;
         case SYS_GAL:
             if (prn<MINPRNGAL||MAXPRNGAL<prn) return 0;
-            return NSATGPS+NSATGLO+prn-MINPRNGAL+1;
+			return NSATGPS+NSATGLO+prn-MINPRNGAL+1;
         case SYS_QZS:
             if (prn<MINPRNQZS||MAXPRNQZS<prn) return 0;
-            return NSATGPS+NSATGLO+NSATGAL+prn-MINPRNQZS+1;
+			return NSATGPS+NSATGLO+NSATGAL+prn-MINPRNQZS+1;
         case SYS_CMP:
             if (prn<MINPRNCMP||MAXPRNCMP<prn) return 0;
-            return NSATGPS+NSATGLO+NSATGAL+NSATQZS+prn-MINPRNCMP+1;
+			return NSATGPS+NSATGLO+NSATGAL+NSATQZS+prn-MINPRNCMP+1;
         case SYS_LEO:
             if (prn<MINPRNLEO||MAXPRNLEO<prn) return 0;
-            return NSATGPS+NSATGLO+NSATGAL+NSATQZS+NSATCMP+prn-MINPRNLEO+1;
+			return NSATGPS+NSATGLO+NSATGAL+NSATQZS+NSATCMP+prn-MINPRNLEO+1;
         case SYS_SBS:
             if (prn<MINPRNSBS||MAXPRNSBS<prn) return 0;
-            return NSATGPS+NSATGLO+NSATGAL+NSATQZS+NSATCMP+NSATLEO+prn-MINPRNSBS+1;
+			return NSATGPS+NSATGLO+NSATGAL+NSATQZS+NSATCMP+NSATLEO+prn-MINPRNSBS+1;
     }
     return 0;
 }
