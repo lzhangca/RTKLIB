@@ -208,6 +208,9 @@ static void input_ssr(gtime_t time, rtcm_t *rtcm, nav_t *nav, FILE *fp)
     }
 }
 
+extern void settspan(gtime_t ts, gtime_t te) {}
+extern void settime(gtime_t time) {}
+
 /* input obs data, navigation messages and sbas correction -------------------*/
 static int inputobs(obsd_t *obs, int solq, const prcopt_t *popt)
 {

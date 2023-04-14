@@ -398,7 +398,7 @@ extern "C" {
 #define STRFMT_RNXCLK 17                /* stream format: RINEX CLK */
 #define STRFMT_SBAS  18                 /* stream format: SBAS messages */
 #define STRFMT_NMEA  19                 /* stream format: NMEA 0183 */
-
+#define STRFMT_LEXR  99                 // no in use
 #define MAXRCVFMT    13                 /* max number of receiver format */
 
 #define STR_MODE_R  0x1                 /* stream mode: read */

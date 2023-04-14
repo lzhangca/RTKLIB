@@ -3,6 +3,9 @@
 *.ini
 *.local
 Release
+Debug
 Release_Build
 Debug_Build
 __history
+.vs
+Backup
