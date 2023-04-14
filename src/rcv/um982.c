@@ -149,7 +149,6 @@ static int decode_trackstat(unsigned int stat, int *sys, int *code, int *plock,
 static int getUM982opps(int sys, int code, int freq)
 {
 	int pos = freq;
-	/*
 	if (sys==SYS_GAL) {
 		if (code == CODE_L5Q) pos = 1;
 		if (code == CODE_L7Q) pos = 2;
@@ -159,7 +158,6 @@ static int getUM982opps(int sys, int code, int freq)
 		if (code == CODE_L7I) pos = 1;
 		if (code == CODE_L6I) pos = 2;
 	}
-    */
 	return pos<NFREQ?pos:-1;
 }
 

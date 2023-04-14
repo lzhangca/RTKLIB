@@ -161,7 +161,8 @@ static int convbin(int format, rnxopt_t *opt, const char *ifile, char **file,
                    char *dir)
 {
     int i,def;
-    char work[1024],ofile_[7][1024],*ofile[7],*p;
+    char work[1024],*ofile[7],*p;
+    char ofile_[7][1024]={0};
     char *extnav=opt->rnxver<=2.99||opt->navsys==SYS_GPS?"N":"P";
     char *extlog=format==STRFMT_LEXR?"lex":"sbs";
     
@@ -435,6 +436,7 @@ static int cmdopts(int argc, char **argv, rnxopt_t *opt, char **ifile,
         else if (!strcmp(fmt,"binex")) format=STRFMT_BINEX;
         else if (!strcmp(fmt,"rt17" )) format=STRFMT_RT17;
         else if (!strcmp(fmt,"rinex")) format=STRFMT_RINEX;
+        else if (!strcmp(fmt,"um982")) format=STRFMT_UM982;
     }
     else {
         paths[0]=path;
