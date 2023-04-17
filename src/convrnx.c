@@ -967,7 +967,12 @@ static int convrnx_s(int sess, int format, rnxopt_t *opt, const char *file,
                 case 31: convlex(ofp,opt,str,n);       break;
                 case -1: n[NOUTFILE]++; break; /* error */
             }
-            te=str->time; if (ts.time==0) ts=te;
+            if (type > 0) {
+                te = str->time;
+            }
+            if (ts.time == 0) {
+                ts = te;
+            }
             
             /* set approx position */
             if (type==1&&!opt->autopos&&norm(opt->apppos,3)<=0.0) {

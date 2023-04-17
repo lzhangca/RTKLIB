@@ -6,8 +6,9 @@
 
 #define UM982HLEN    24          /* um982 message header length (bytes) */
 
-#define ID_OBSVM	 12         /* message id: um982 channel observations */
-
+// #define ID_OBSVM	 12         /* message id: um982 channel observations */
+// #define ID_OBSVH	 13         /* message id: um982 channel observations */
+int ID_OBSV = 12;
 
 /* get fields (little-endian) ------------------------------------------------*/
 static unsigned short U2(unsigned char *p) {unsigned short u; memcpy(&u,p,2); return u;}
@@ -259,9 +260,8 @@ static int decode_um982(raw_t *raw)
 		sprintf(raw->msgtype,"UM982 %4d (%4d): msg=%d %s",type,raw->len,msg,
                 time_str(gpst2time(week,tow),2));
 	}
-
-	switch (type) {
-		case ID_OBSVM: return decode_obsvm(raw);
+	if(type == ID_OBSV){
+		return decode_obsvm(raw);
 	}
     return 0;
 }

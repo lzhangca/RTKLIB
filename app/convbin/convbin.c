@@ -259,6 +259,9 @@ static int convbin(int format, rnxopt_t *opt, const char *ifile, char **file,
     fprintf(stderr,"\n");
     return 0;
 }
+
+extern int ID_OBSV; // add by lei 2023.04.17
+
 /* parse command line options ------------------------------------------------*/
 static int cmdopts(int argc, char **argv, rnxopt_t *opt, char **ifile,
                    char **ofile, char **dir, int *trace)
@@ -362,6 +365,9 @@ static int cmdopts(int argc, char **argv, rnxopt_t *opt, char **ifile,
         }
         else if (!strcmp(argv[i],"-scan")) {
             opt->scanobs=1;
+        }
+        else if (!strcmp(argv[i], "-at") && i + 1 < argc) {
+            ID_OBSV = atoi(argv[++i]);
         }
         else if (!strcmp(argv[i],"-mask")&&i+1<argc) {
             for (j=0;j<6;j++) for (k=0;k<64;k++) opt->mask[j][k]='0';
