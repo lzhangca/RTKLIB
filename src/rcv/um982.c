@@ -208,6 +208,11 @@ static int decode_obsvm(raw_t *raw)
 			continue;
 		}
 
+		// skip low snr sat
+		if (snr < 30) {
+			continue;
+		}
+
 		/* set glonass frequency channel number */
 		if (sys==SYS_GLO) {
 			raw->nav.geph[prn-1].frq=sysf-7;
